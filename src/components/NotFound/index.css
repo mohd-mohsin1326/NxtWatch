@@ -1,0 +1,28 @@
+.not-found-main-container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.not-found-card {
+  min-height: 100vh;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #f1f5f9;
+  font-family: 'Roboto';
+  padding: 50px;
+}
+.not-found-img-style {
+  height: 300px;
+  width: 300px;
+}
+.not-found-title {
+  color: #231f20;
+}
+.not-found-description {
+  color: #cbd5e1;
+  margin-top: -15px;
+}

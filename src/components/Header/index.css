@@ -1,0 +1,40 @@
+.navbar-main-container {
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 50px;
+  padding-right: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.header-logo-style {
+  height: 40px;
+  width: 150px;
+}
+.logout-container {
+  width: 20%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.mode-icon-style {
+  font-size: 30px;
+}
+.profile-icon-style {
+  height: 30px;
+  width: 30px;
+}
+.logout-btn-style {
+  background: transparent;
+  border: 1px solid #3b82f6;
+  color: #3b82f6;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 15px;
+  padding-left: 15px;
+  font-weight: bold;
+  font-family: 'Roboto';
+  font-size: 18px;
+}
