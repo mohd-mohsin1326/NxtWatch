@@ -104,7 +104,7 @@ class Gaming extends Component {
       <button
         type="button"
         className="retry-btn-style"
-        onClick={this.getGamingVideo()}
+        onClick={this.getGamingVideo}
       >
         Retry
       </button>

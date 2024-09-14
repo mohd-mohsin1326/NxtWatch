@@ -124,19 +124,23 @@ class Home extends Component {
 
     // Conditionally render based on whether filteredVideos has any results
     return (
-      <div className="videos-container">
+      <div className="videos-container" data-testid="banner">
         {isBanner ? (
           <div className="banner-container">
             <div>
               <img
                 src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
-                alt="watch logo"
+                alt="nxt watch logo"
                 className="header-logo-style"
               />
               <p className="buy-title">
                 Buy Nxt Watch Premium prepaid plans with UPI
               </p>
-              <button type="button" className="get-it-btn-style">
+              <button
+                type="button"
+                className="get-it-btn-style"
+                data-testid="close"
+              >
                 GET IT NOW
               </button>
             </div>
@@ -156,7 +160,11 @@ class Home extends Component {
               value={userSearch}
               onChange={this.userSearchedInput}
             />
-            <button type="button" className="search-btn-style">
+            <button
+              type="button"
+              className="search-btn-style"
+              data-testid="searchButton"
+            >
               <IoIosSearch className="search-icon-style" />
             </button>
           </div>
@@ -171,14 +179,14 @@ class Home extends Component {
                   >
                     <img
                       src={eachvideo.thumbnailUrl}
-                      alt="thumbnail"
+                      alt="video thumbnail"
                       className="thumbnail-img-style"
                     />
                   </Link>
                   <div className="video-description-card">
                     <img
                       src={eachvideo.channelprofileImg}
-                      alt="logo"
+                      alt="channel logo"
                       className="chanal-logo-style"
                     />
                     <div className="video-detail-card">
@@ -205,7 +213,7 @@ class Home extends Component {
   }
 
   renderLoadingView = () => (
-    <div className="video-loader-container">
+    <div className="video-loader-container" data-testid="loader">
       <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
     </div>
   )
@@ -225,7 +233,7 @@ class Home extends Component {
       <button
         type="button"
         className="retry-btn-style"
-        onClick={this.getAllVideos()}
+        onClick={this.getAllVideos}
       >
         Retry
       </button>

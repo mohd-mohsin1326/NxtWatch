@@ -8,20 +8,23 @@ import VideoItem from './components/VideoItem'
 import SavedVideos from './components/SavedVideos'
 import NotFound from './components/NotFound'
 import ProtectedRoute from './components/ProtectedRoute'
+import {SavedVideosProvider} from './Context/SavedVideosContext'
 
 import './App.css'
 
 const App = () => (
-  <Switch>
-    <Route exact path="/login" component={LoginRoute} />
-    <ProtectedRoute exact path="/" component={Home} />
-    <ProtectedRoute exact path="/trending" component={Trending} />
-    <ProtectedRoute exact path="/gaming" component={Gaming} />
-    <ProtectedRoute exact path="/videoitem/:id" component={VideoItem} />
-    <ProtectedRoute exact path="/savedvideos" component={SavedVideos} />
-    <Route path="/not-found" component={NotFound} />
-    <Redirect to="not-found" />
-  </Switch>
+  <SavedVideosProvider>
+    <Switch>
+      <Route exact path="/login" component={LoginRoute} />
+      <ProtectedRoute exact path="/" component={Home} />
+      <ProtectedRoute exact path="/trending" component={Trending} />
+      <ProtectedRoute exact path="/gaming" component={Gaming} />
+      <ProtectedRoute exact path="/videoitem/:id" component={VideoItem} />
+      <ProtectedRoute exact path="/saved-videos" component={SavedVideos} />
+      <Route path="/bad-path" component={NotFound} />
+      <Redirect to="not-found" />
+    </Switch>
+  </SavedVideosProvider>
 )
 
 export default App

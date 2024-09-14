@@ -82,7 +82,7 @@ class SideBar extends Component {
           </Link>
 
           <Link
-            to="/savedvideos"
+            to="/saved-videos"
             className="link-style"
             onClick={() => this.handleIconClick('Saved videos')}
           >
@@ -103,7 +103,7 @@ class SideBar extends Component {
           </Link>
         </div>
         <div>
-          <h1 className="contact-title">CONTACT US</h1>
+          <p className="contact-title">CONTACT US</p>
           <img
             src="https://assets.ccbp.in/frontend/react-js/nxt-watch-facebook-logo-img.png"
             alt="facebook logo"

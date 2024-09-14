@@ -4,9 +4,10 @@ import {BsDot} from 'react-icons/bs'
 import {BiLike, BiDislike} from 'react-icons/bi'
 import {MdPlaylistAdd} from 'react-icons/md'
 import Loader from 'react-loader-spinner'
-import ReactPlayer from 'react-player' // Import ReactPlayer
+import ReactPlayer from 'react-player'
 import Header from '../Header'
 import SideBar from '../SideBar'
+import SavedVideosContext from '../../Context/SavedVideosContext'
 import './index.css'
 
 const timeSince = date => {
@@ -45,7 +46,6 @@ class VideoItem extends Component {
     apiStatus: apiStatusConstants.initial,
     isLiked: false,
     isDisliked: false,
-    isSaved: false,
   }
 
   componentDidMount = () => {
@@ -98,7 +98,7 @@ class VideoItem extends Component {
   }
 
   renderLoadingView = () => (
-    <div className="video-loader-container">
+    <div className="video-loader-container" data-testid="loader">
       <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
     </div>
   )
@@ -112,7 +112,7 @@ class VideoItem extends Component {
       />
       <h1 className="contact-title">Oops! Something Went Wrong</h1>
       <p className="no-found-description">
-        We are having some trouble to complete your request
+        We are having some trouble completing your request.
       </p>
       <p className="no-found-description">Please try again.</p>
       <button
@@ -139,11 +139,25 @@ class VideoItem extends Component {
     }))
   }
 
-  handleSaved = () =>
-    this.setState(prevState => ({isSaved: !prevState.isSaved}))
+  handleSaved = () => {
+    const {videoDescription} = this.state
+    const {id} = videoDescription
+    const {
+      isVideoSaved,
+      addVideoToSavedList,
+      removeVideoFromSavedList,
+    } = this.context
+
+    if (isVideoSaved(id)) {
+      removeVideoFromSavedList(id)
+    } else {
+      addVideoToSavedList(videoDescription)
+    }
+  }
 
   videoDetail = () => {
-    const {videoDescription, isDisliked, isLiked, isSaved} = this.state
+    const {videoDescription, isLiked, isDisliked} = this.state
+    const {isVideoSaved} = this.context
     const {
       videoUrl,
       title,
@@ -153,7 +167,10 @@ class VideoItem extends Component {
       description,
       channelName,
       subscriptionCount,
+      id,
     } = videoDescription
+
+    const isSaved = isVideoSaved(id)
 
     return (
       <div>
@@ -188,7 +205,7 @@ class VideoItem extends Component {
               onClick={this.handleSaved}
             >
               <MdPlaylistAdd />
-              <p>Save</p>
+              {isSaved ? 'Saved' : 'Save'}
             </button>
           </div>
         </div>
@@ -199,10 +216,8 @@ class VideoItem extends Component {
             className="channel-logo-style-v"
           />
           <div>
-            <div>
-              <p className="channelName-style">{channelName}</p>
-              <p>{subscriptionCount}</p>
-            </div>
+            <p className="channelName-style">{channelName}</p>
+            <p>{subscriptionCount}</p>
             <p>{description}</p>
           </div>
         </div>
@@ -215,7 +230,7 @@ class VideoItem extends Component {
     switch (apiStatus) {
       case apiStatusConstants.success:
         return this.videoDetail()
-      case apiStatusConstants.loader:
+      case apiStatusConstants.inProgress:
         return this.renderLoadingView()
       case apiStatusConstants.failure:
         return this.failureView()

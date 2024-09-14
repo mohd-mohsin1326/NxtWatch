@@ -1,0 +1,38 @@
+.logout-btn-style {
+  background: transparent;
+  border: 1px solid #3b82f6;
+  color: #3b82f6;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 15px;
+  padding-left: 15px;
+  font-weight: bold;
+  font-family: 'Roboto';
+  font-size: 18px;
+}
+.popup-warning-card {
+  color: #1e293b;
+  font-family: 'Roboto';
+  padding: 40px;
+  text-align: center;
+  border-radius: 10px;
+}
+.cancel-button {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+  background: transparent;
+  color: #94a3b8;
+  border: 1px solid #94a3b8;
+  margin-right: 25px;
+}
+.confirm-button{
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+  border: none;
+  background: #3b82f6;
+  color: #fff;
+}

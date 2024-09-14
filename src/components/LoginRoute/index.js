@@ -69,7 +69,7 @@ class LoginRoute extends Component {
         <div className="login-detail-card">
           <img
             src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
-            alt="watch logo"
+            alt="website logo"
             className="logo-image-style"
           />
           <form className="form-container" onSubmit={this.submitForm}>

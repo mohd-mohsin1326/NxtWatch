@@ -5,8 +5,8 @@
   flex-direction: row;
 }
 .saved-img-style {
-  height: 400px;
-  width: 400px;
+  height: 250px;
+  width: 250px;
 }
 .no-videos-found-card {
   display: flex;
@@ -16,4 +16,27 @@
 .render-saved-videos-card {
   width: 70%;
   background: #f1f5f9;
+}
+.saved-videos-main-list {
+  min-height: 100vh;
+  width: 100%;
+}
+.saved-video-lists {
+  height: 25vh;
+  width: 100%;
+  list-style-type: none;
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.saved-video-image {
+  width: 30%;
+  height: 100%;
+  margin-right: 25px;
+}
+.saved-views-time-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
